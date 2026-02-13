@@ -29,26 +29,26 @@
 ### 4-2.システムアーキテクチャ
 ```mermaid
 graph TD
-  device --> SPA
-  SPA --> device
+  device --> API_
+  API_ --> device
   
   API_ --tsx--> SPA
   SPA --json--> API_
   
-  local --> API_
+  local --> SPA
   
   DataBase --情報の提示--> API_
   API_ --情報の変更--> DataBase
   
-  Gemini --Score--> API_
-  weather --Score--> API_
+  Gemini --Score--> SPA
+  weather --Score--> SPA
   
     subgraph Front_End
-        API_[API_endpoint]
+        API_[SPA]
     end
 
     subgraph "Back_End"
-        SPA[SPA]
+        SPA[API_endpoint]
         local[画像]
     end
 
